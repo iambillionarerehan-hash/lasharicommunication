@@ -1,0 +1,932 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171a18">
+  <meta name="description" content="Discover smartwatches, earbuds, power banks, mobile covers, chargers, cables, adapters and speakers at The Lashari Communication (XCESS). Nationwide delivery across Pakistan.">
+  <title>The Lashari Communication (XCESS) — Upgrade Your Everyday</title>
+
+  <!-- Google Fonts: Manrope (Display) & DM Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- XCESS Design System Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- MOUSE-FOLLOW CURSOR GLOW -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <a class="skip-link" href="#collection">Skip to collection</a>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="topbar" id="topAnnouncementBar">
+    <span class="pulse"></span>
+    <span id="announcementCustomText">THE EVERYDAY TECH EDIT · FLAT RS. 200 TCS &amp; LEOPARDS DELIVERY</span>
+    <span class="topbar-right">
+      EXPLORE THE COLLECTION
+      <span aria-hidden="true">↗</span>
+    </span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="header-inner wrap">
+      <a href="#top" class="brand" aria-label="XCESS home">
+        xcess<span class="brand-dot">.</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#collection" class="is-current">Shop all</a>
+        <a href="#categories">Categories</a>
+        <a href="#brands">Mobile Covers</a>
+        <a href="#locationSection">Location</a>
+        <a href="#about">Our vibe</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- SEARCH -->
+        <button id="searchToggle" class="icon-button" aria-label="Search collection" title="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.6"/>
+            <path d="m16 16 5 5"/>
+          </svg>
+        </button>
+
+        <!-- WISHLIST -->
+        <button id="favoritesToggle" class="icon-button fav-button" aria-label="Show saved favorites" title="Saved favorites">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.7 8.5c0 4.3-8.7 10.4-8.7 10.4S3.3 12.8 3.3 8.5A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.7 2.3Z"/>
+          </svg>
+          <span id="favoritesCount" class="count-badge" hidden>0</span>
+        </button>
+
+        <!-- SHOPPING BAG -->
+        <button id="bagToggle" class="bag-button" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.5 8.5h15l-1.2 12h-12l-1.8-12Z"/>
+            <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+          </svg>
+          <span>Bag</span>
+          <span class="bag-count" id="headerBagCount">0</span>
+        </button>
+
+        <!-- ADMIN PANEL BUTTON -->
+        <button class="admin-header-btn" onclick="AdminController.promptLogin()" title="Store Admin">
+          <i class="fa-solid fa-lock"></i> Admin
+        </button>
+
+        <!-- MOBILE MENU -->
+        <button class="menu-button" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE NAVIGATION -->
+    <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+      <a href="#collection">Shop all</a>
+      <a href="#categories">Categories</a>
+      <a href="#brands">Mobile Covers</a>
+      <a href="#locationSection">Store Location</a>
+      <a href="#about">Our vibe</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="heroSection" aria-labelledby="heroHeading">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            TECH ACCESSORIES, REIMAGINED
+          </div>
+          <h1 id="heroHeading">
+            Small gear.<br>
+            <em>Big energy.</em>
+          </h1>
+          <p>
+            From your first call to your last playlist—accessories
+            that fit right into your everyday.
+          </p>
+          <div class="hero-cta">
+            <a class="button button-dark" href="#collection">
+              Explore collection
+              <span>↗</span>
+            </a>
+            <a class="text-link" href="#categories">
+              See categories
+              <span>↗</span>
+            </a>
+          </div>
+          <div class="hero-note">
+            <span class="mini-star">✳</span>
+            <span>
+              Everyday essentials.<br>
+              <strong>Your kind of upgrade.</strong>
+            </span>
+          </div>
+        </div>
+
+        <!-- 3D PRODUCT ILLUSTRATIONS STAGE -->
+        <div class="hero-stage" aria-label="Decorative smartwatch and earbuds illustrations">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="hero-disc"></div>
+          <div class="hero-glow"></div>
+
+          <!-- Pure CSS 3D Floating Watch -->
+          <div class="hero-product hero-watch" id="heroWatch">
+            <div class="art-root">
+              <div class="art-object watch-object">
+                <div class="watch-strap"></div>
+                <div class="watch-face">
+                  <div class="watch-time">09<span>41</span></div>
+                  <div class="watch-dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pure CSS 3D Floating Earbuds -->
+          <div class="hero-product hero-earbuds" id="heroEarbuds">
+            <div class="art-root">
+              <div class="art-object buds-object">
+                <div class="earbud one"></div>
+                <div class="earbud two"></div>
+                <div class="buds-case"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-sticker sticker-top">
+            <span>✳</span>
+            YOUR DAILY<br>
+            ESSENTIALS
+          </div>
+          <div class="hero-sticker sticker-bottom">
+            MADE FOR<br>
+            <strong>YOUR MOVE ↗</strong>
+          </div>
+          <div class="hero-bottom-label">
+            01 — THE ACCESSORY EDIT
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-index wrap">
+        <span>SCROLL TO EXPLORE ↓</span>
+        <span>SMART TECH / REAL STYLE</span>
+      </div>
+    </section>
+
+    <!-- SCROLLING CATEGORY TICKER -->
+    <div class="ticker" aria-label="Product categories">
+      <div class="ticker-track" aria-hidden="true">
+        SMARTWATCHES <span>✳</span>
+        EARBUDS <span>✳</span>
+        POWER BANKS <span>✳</span>
+        CHARGERS <span>✳</span>
+        SPEAKERS <span>✳</span>
+        MOBILE COVERS <span>✳</span>
+        SMARTWATCHES <span>✳</span>
+        EARBUDS <span>✳</span>
+        POWER BANKS <span>✳</span>
+        CHARGERS <span>✳</span>
+        SPEAKERS <span>✳</span>
+        MOBILE COVERS <span>✳</span>
+      </div>
+      <div class="ticker-track" aria-hidden="true">
+        SMARTWATCHES <span>✳</span>
+        EARBUDS <span>✳</span>
+        POWER BANKS <span>✳</span>
+        CHARGERS <span>✳</span>
+        SPEAKERS <span>✳</span>
+        MOBILE COVERS <span>✳</span>
+        SMARTWATCHES <span>✳</span>
+        EARBUDS <span>✳</span>
+        POWER BANKS <span>✳</span>
+        CHARGERS <span>✳</span>
+        SPEAKERS <span>✳</span>
+        MOBILE COVERS <span>✳</span>
+      </div>
+    </div>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="categories-section section-space wrap" id="categories">
+      <div class="section-kicker">
+        <span class="section-number">01 /</span>
+        DISCOVER YOUR FIT
+      </div>
+      <div class="section-heading-row">
+        <h2>
+          What are you<br>
+          <span class="muted">looking for?</span>
+        </h2>
+        <p>
+          Eight ways to make your setup more you.
+          Pick a category and take a closer look.
+        </p>
+      </div>
+
+      <!-- Categories 12 Tiles -->
+      <div class="category-strip" id="categoryStrip">
+        <button class="category-tile reveal in-view" data-category="smartwatches">
+          <span class="category-icon" aria-hidden="true">⌚</span>
+          <span>
+            <strong>Smartwatches</strong>
+            <small>Wearables</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="earbuds">
+          <span class="category-icon" aria-hidden="true">♫</span>
+          <span>
+            <strong>Earbuds</strong>
+            <small>Audio</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="powerbanks">
+          <span class="category-icon" aria-hidden="true">ϟ</span>
+          <span>
+            <strong>Power Banks</strong>
+            <small>Power</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="wirelesschargers">
+          <span class="category-icon" aria-hidden="true">◎</span>
+          <span>
+            <strong>Wireless Chargers</strong>
+            <small>Power</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="cableschargers">
+          <span class="category-icon" aria-hidden="true">↝</span>
+          <span>
+            <strong>Cables &amp; Chargers</strong>
+            <small>Everyday</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="adapters">
+          <span class="category-icon" aria-hidden="true">▣</span>
+          <span>
+            <strong>Adapters</strong>
+            <small>Everyday</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="speakers">
+          <span class="category-icon" aria-hidden="true">◉</span>
+          <span>
+            <strong>Speakers</strong>
+            <small>Audio</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="ringlight">
+          <span class="category-icon" aria-hidden="true">◯</span>
+          <span>
+            <strong>LED Ring Light</strong>
+            <small>Style</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="deskholder">
+          <span class="category-icon" aria-hidden="true">⊥</span>
+          <span>
+            <strong>Desk Mobile Holders</strong>
+            <small>Holders</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="carholder">
+          <span class="category-icon" aria-hidden="true">⌾</span>
+          <span>
+            <strong>Car Mobile Holders</strong>
+            <small>Holders</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="bikeholder">
+          <span class="category-icon" aria-hidden="true">⊙</span>
+          <span>
+            <strong>Bike Mobile Holders</strong>
+            <small>Holders</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile reveal in-view" data-category="covers">
+          <span class="category-icon" aria-hidden="true">▯</span>
+          <span>
+            <strong>Mobile Covers</strong>
+            <small>Style</small>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- PRODUCTS COLLECTION -->
+    <section class="collection-section section-space" id="collection">
+      <div class="wrap">
+        <div class="section-kicker">
+          <span class="section-number">02 /</span>
+          THE LINEUP
+        </div>
+        <div class="section-heading-row collection-heading">
+          <h2>
+            Explore the<br>
+            <span class="muted">collection.</span>
+          </h2>
+          <p>
+            The essentials are all here. Flat <strong>200 PKR</strong> delivery fee nationwide via <strong>TCS &amp; Leopards Courier</strong>.
+          </p>
+        </div>
+
+        <!-- PRODUCT FILTERS & SEARCH -->
+        <div class="collection-toolbar">
+          <div class="filter-tabs" id="filters" role="group" aria-label="Filter products">
+            <!-- Dynamically populated or interactive filters -->
+          </div>
+
+          <label class="search-field" id="searchField">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.6"/>
+              <path d="m16 16 5 5"/>
+            </svg>
+            <input id="searchInput" type="search" placeholder="Search accessories, covers, models..." aria-label="Search accessories">
+          </label>
+        </div>
+
+        <!-- PRODUCT CARDS INJECTED BY JS -->
+        <div class="product-grid" id="productGrid"></div>
+
+        <p class="empty-state" id="emptyState" hidden>
+          No accessories found. Try a different search or filter.
+        </p>
+
+        <!-- SHOW MORE PRODUCTS BUTTON (2 Rows initially, then 3 more rows on click) -->
+        <div id="loadMoreContainer">
+          <button type="button" id="btnLoadMoreProducts" class="button button-dark">
+            Show more items <span style="font-size:14px; margin-left:4px;">↓</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section class="reviews-section section-space" id="reviewsSection">
+      <div class="wrap">
+        <div class="section-kicker">
+          <span class="section-number">03 /</span>
+          CUSTOMER EXPERIENCES
+        </div>
+        <div class="section-heading-row" style="margin-bottom:30px;">
+          <div>
+            <h2 style="font-size:clamp(36px, 5.5vw, 60px); margin:0;">
+              Loved across<br>
+              <span class="muted">Pakistan.</span>
+            </h2>
+            <div class="reviews-rating-banner">
+              <div class="reviews-stars" aria-label="5 star rating">★★★★★</div>
+              <strong>4.9 / 5.0</strong>
+              <span>(1,850+ Verified Orders Nationwide)</span>
+            </div>
+          </div>
+          <p style="max-width:440px;">
+            Genuine feedback from customers in Karachi, Lahore, Islamabad, Multan, and Rawalpindi. Flat Rs. 200 delivery via TCS &amp; Leopards.
+          </p>
+        </div>
+
+        <!-- CAROUSEL CONTROLS & REVIEWS CARDS (Auto-shuffled periodically) -->
+        <div class="reviews-carousel-wrap">
+          <button type="button" class="reviews-nav-btn prev-btn" id="prevReviewsBtn" aria-label="Previous reviews" title="Previous reviews">‹</button>
+          <div class="reviews-grid" id="reviewsGrid"></div>
+          <button type="button" class="reviews-nav-btn next-btn" id="nextReviewsBtn" aria-label="Next reviews" title="Next reviews">›</button>
+        </div>
+
+        <!-- INDICATOR DOTS -->
+        <div class="reviews-dots" id="reviewsDots"></div>
+      </div>
+    </section>
+
+    <!-- SPECIAL PROMO OFFER SECTION (Fully Editable in Admin) -->
+    <section class="special-offer-section wrap" id="specialOfferSection">
+      <div class="offer-card">
+        <div class="offer-glow" aria-hidden="true"></div>
+        <div class="offer-content">
+          <span class="offer-badge" id="displayOfferTag">🔥 LIMITED TIME MEGA DROP</span>
+          <h2 id="displayOfferTitle">FLAT 25% OFF · WEEKEND EDIT</h2>
+          <p id="displayOfferDesc">Use promo code FLASH25 at checkout or claim flat Rs. 200 delivery nationwide with TCS &amp; Leopards Express courier dispatch.</p>
+          
+          <div class="offer-code-box">
+            <span class="offer-code-label">PROMO VOUCHER:</span>
+            <strong class="offer-code-val" id="displayOfferCode">FLASH25</strong>
+            <button type="button" class="offer-copy-btn" id="btnCopyOfferCode" onclick="copyOfferPromoCode()">Copy Code</button>
+          </div>
+
+          <div class="offer-actions">
+            <a href="#collection" class="button button-lime" id="displayOfferBtnLink">
+              <span id="displayOfferBtnText">Shop Weekend Deals</span> ↗
+            </a>
+            <span class="offer-note" id="displayOfferNote">⚡ Valid for all orders across Pakistan · Limited Stock</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / EDITORIAL SECTION -->
+    <section class="editorial-section" id="about" style="display:none;">
+      <div class="wrap editorial-grid">
+        <div class="editorial-art">
+          <div class="editorial-loop"></div>
+          <div class="editorial-dot">X.</div>
+          <div class="editorial-word">
+            EVERY<br>
+            DAY.
+          </div>
+          <div class="editorial-corner">
+            DESIGNED AROUND YOU ↗
+          </div>
+        </div>
+
+        <div class="editorial-copy">
+          <div class="section-kicker light-kicker">
+            <span class="section-number">03 /</span>
+            THE XCESS FEELING
+          </div>
+          <h2>
+            Good tech.<br>
+            <em>Better days.</em>
+          </h2>
+          <p>
+            Power up, tune in, stay connected, and make your
+            phone your own. Your everyday setup starts
+            with the little things.
+          </p>
+          <a class="button button-lime" href="#collection">
+            Find your essentials
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING SECTION -->
+    <section class="closing-section wrap" id="closingSection" style="display:none;">
+      <div class="closing-star">✳</div>
+      <p>
+        THE RIGHT ACCESSORY CHANGES THE WHOLE VIBE.
+      </p>
+      <h2>
+        Make it yours<span>.</span>
+      </h2>
+      <a class="round-arrow" href="#collection" aria-label="Back to collection">
+        ↗
+      </a>
+    </section>
+
+    <!-- BRAND / MOBILE COVERS SECTION -->
+    <section class="brand-section section-space" id="brands">
+      <div class="wrap">
+        <div class="section-kicker">
+          <span class="section-number">04 /</span>
+          COVERS FOR EVERY PHONE
+        </div>
+        <div class="section-heading-row brand-heading">
+          <h2>
+            Mobile<br>
+            <span class="muted">Covers.</span>
+          </h2>
+          <div>
+            <h3 style="font: 800 20px var(--display); color: var(--ink); margin: 0 0 6px;">Select your brand</h3>
+            <p style="margin: 0; color: var(--muted); font-size: 14.5px;">
+              Find your perfect case for your device. Compatible with all top models.
+            </p>
+          </div>
+        </div>
+
+        <div class="brand-grid" id="brandGrid">
+          <div class="brand-card reveal in-view" data-brand="apple">
+            <div class="brand-logo">
+              <span class="brand-logo-text"></span>
+            </div>
+            <div class="brand-name">Apple</div>
+          </div>
+        
+          <div class="brand-card reveal in-view" data-brand="samsung">
+            <div class="brand-logo">
+              <span class="brand-logo-text">S</span>
+            </div>
+            <div class="brand-name">Samsung</div>
+          </div>
+        
+          <div class="brand-card reveal in-view" data-brand="xiaomi">
+            <div class="brand-logo">
+              <span class="brand-logo-text">Mi</span>
+            </div>
+            <div class="brand-name">Xiaomi</div>
+          </div>
+        
+          <div class="brand-card reveal in-view" data-brand="vivo">
+            <div class="brand-logo">
+              <span class="brand-logo-text">V</span>
+            </div>
+            <div class="brand-name">Vivo</div>
+          </div>
+        
+          <div class="brand-card reveal in-view" data-brand="oppo">
+            <div class="brand-logo">
+              <span class="brand-logo-text">O</span>
+            </div>
+            <div class="brand-name">Oppo</div>
+          </div>
+        
+          <div class="brand-card reveal in-view" data-brand="realme">
+            <div class="brand-logo">
+              <span class="brand-logo-text">R</span>
+            </div>
+            <div class="brand-name">Realme</div>
+          </div>
+        
+          <div class="brand-card reveal in-view" data-brand="infinix">
+            <div class="brand-logo">
+              <span class="brand-logo-text">In</span>
+            </div>
+            <div class="brand-name">Infinix</div>
+          </div>
+        
+          <div class="brand-card reveal in-view" data-brand="tecno">
+            <div class="brand-logo">
+              <span class="brand-logo-text">T</span>
+            </div>
+            <div class="brand-name">Tecno</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP LOCATION / VISIT US SECTION -->
+    <section class="location-section section-space" id="locationSection">
+      <div class="wrap">
+        <div class="section-kicker">
+          <span class="section-number">05 /</span>
+          VISIT OUR STORE
+        </div>
+        <div class="section-heading-row">
+          <h2>
+            <span id="displayLocationHeading">Find us in<br><span class="muted">person.</span></span>
+          </h2>
+          <p id="displayLocationDesc">
+            Experience our premium tech essentials, live checking warranty, and free precision mobile cover fitting at our official outlet.
+          </p>
+        </div>
+
+        <div class="location-grid">
+          <!-- Left: Store Information Card -->
+          <div class="location-info-card">
+            <div class="location-badge">
+              <span class="location-pulse"></span>
+              Official Physical Outlet · Pakistan
+            </div>
+
+            <h3 class="location-store-title" id="displayLocationStoreTitle">The Lashari Communication</h3>
+            
+            <div class="location-detail-item">
+              <div class="location-icon-box">📍</div>
+              <div>
+                <span class="location-detail-label">Store Address</span>
+                <p class="location-detail-val shop-address-text" id="displayLocationAddress">
+                  Shop #14, Ground Floor, Lashari Mobile Plaza, Pakistan
+                </p>
+              </div>
+            </div>
+
+            <div class="location-detail-item">
+              <div class="location-icon-box">🕒</div>
+              <div>
+                <span class="location-detail-label">Store Timings</span>
+                <p class="location-detail-val" id="displayLocationTimings">
+                  <strong>Monday – Sunday:</strong> 11:00 AM – 11:00 PM<br>
+                  <span style="color:var(--muted); font-size:12px;">(Friday Break: 1:00 PM – 2:30 PM)</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="location-detail-item">
+              <div class="location-icon-box">📞</div>
+              <div>
+                <span class="location-detail-label">Direct Contact &amp; Support</span>
+                <p class="location-detail-val">
+                  Phone: <strong class="shop-phone-text">+92 321 2920914</strong><br>
+                  Email: <span class="shop-email-text">thelasharicommunication@gmail.com</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="location-perks-row">
+              <span class="location-perk-tag">🛡️ Free Case Fitting</span>
+              <span class="location-perk-tag">⚡ Live Product Demo</span>
+              <span class="location-perk-tag">💳 Cash &amp; Online Transfer</span>
+              <span class="location-perk-tag">📦 Instant In-Store Pickup</span>
+            </div>
+
+            <div class="location-actions">
+              <a id="shopMapLink" class="button button-lime" href="https://www.google.com/maps/search/?api=1&query=Shop+%2314%2C+Ground+Floor%2C+Lashari+Mobile+Plaza%2C+Pakistan" target="_blank" rel="noopener">
+                Get Directions on Maps ↗
+              </a>
+              <a class="button button-ghost shop-whatsapp-link" href="https://wa.me/923212920914" target="_blank" rel="noopener">
+                Chat on WhatsApp 💬
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Google Map Card -->
+          <div class="location-map-card">
+            <div class="location-map-header">
+              <div class="location-map-title">
+                <span class="map-dot"></span>
+                <span>Google Maps Live Location</span>
+              </div>
+              <span class="location-map-badge">Verified Location</span>
+            </div>
+            <div class="location-iframe-wrapper">
+              <iframe 
+                id="shopMapIframe"
+                src="https://maps.google.com/maps?q=Shop%20%2314%2C%20Ground%20Floor%2C%20Lashari%20Mobile%20Plaza%2C%20Pakistan&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Shop Physical Location Map">
+              </iframe>
+            </div>
+            <div class="location-map-footer">
+              <span>📍 Lashari Mobile Plaza, Pakistan</span>
+              <a class="location-open-link" href="https://www.google.com/maps/search/?api=1&query=Shop+%2314%2C+Ground+Floor%2C+Lashari+Mobile+Plaza%2C+Pakistan" target="_blank" rel="noopener">
+                View Full Map ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-top">
+      <div class="footer-about">
+        <a class="brand footer-brand" href="#top">
+          xcess<span class="brand-dot">.</span>
+        </a>
+        <p>Your daily dose of better tech essentials and precision mobile back covers.</p>
+        <div class="footer-location">
+          <span class="footer-location-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </span>
+          <span>The Lashari Communication<br><strong class="shop-address-text">Shop #14, Ground Floor, Lashari Mobile Plaza, Pakistan</strong></span>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#collection">Shop all</a>
+        <a href="#categories">Categories</a>
+        <a href="#brands">Mobile Covers</a>
+        <a href="#locationSection">Store Location</a>
+        <a href="#about">About</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+
+      <div class="footer-contact">
+        <span class="footer-contact-heading">Get in touch</span>
+        <a class="footer-contact-link shop-whatsapp-link" href="https://wa.me/923212920914" target="_blank" rel="noopener">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.6-6.7"/><path d="M20 4 12 12"/></svg>
+          </span>
+          WhatsApp: <span class="shop-phone-text">+92 321 2920914</span>
+        </a>
+        <a class="footer-contact-link shop-email-link" href="mailto:thelasharicommunication@gmail.com">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3.5 6.5h17v11h-17z"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+          </span>
+          <span class="shop-email-text">thelasharicommunication@gmail.com</span>
+        </a>
+
+        <div class="footer-social">
+          <a href="https://instagram.com/thelasharicommunication" id="footerInstaLink" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://facebook.com/thelasharicommunication" id="footerFbLink" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M14.5 21v-7.2h2.4l.4-2.8h-2.8V9.1c0-.8.2-1.4 1.4-1.4h1.5V5.2A20 20 0 0 0 15 5c-2.1 0-3.5 1.3-3.5 3.6v2.4H9v2.8h2.5V21"/></svg>
+          </a>
+          <a href="https://tiktok.com/@thelasharicommunication" id="footerTiktokLink" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M14 4v10.5a2.8 2.8 0 1 1-2-2.7"/><path d="M14 4c.3 2 1.8 3.5 4 3.8"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap footer-bottom">
+      <span>
+        &copy; <span id="year">2026</span> The Lashari Communication (XCESS). ALL RIGHTS RESERVED.
+      </span>
+      <span>
+        NATIONWIDE DELIVERY VIA TCS &amp; LEOPARDS · FLAT 200 PKR
+      </span>
+    </div>
+  </footer>
+
+  <!-- PRODUCT QUICK VIEW DIALOG -->
+  <dialog id="productDialog" class="site-dialog">
+    <button class="dialog-close" data-close-dialog aria-label="Close details">&times;</button>
+    <div id="dialogVisual" class="dialog-visual"></div>
+    <div class="dialog-body">
+      <span class="dialog-kicker" id="dialogCategory">XCESS COLLECTION</span>
+      <h3 id="dialogTitle">Product Title</h3>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+        <span style="font: 800 22px var(--display);" id="dialogPrice">Rs. 1,450</span>
+        <span style="font-size: 13px; color: var(--muted); text-decoration: line-through;" id="dialogOldPrice">Rs. 1,999</span>
+        <span style="font-size: 11px; background: var(--lime); color: var(--ink); padding: 2px 8px; border-radius: 4px; font-weight: 800;">Flat 200 PKR Delivery</span>
+      </div>
+      <p id="dialogDescription">Product description</p>
+      <div class="dialog-note">
+        <strong>Dispatch Partners:</strong> TCS Express &amp; Leopards Courier. Available in Cash on Delivery and Advance Payment.
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:20px;">
+        <button id="dialogBuyNowBtn" class="button button-dark" style="justify-content:center;">
+          Buy Now <span>↗</span>
+        </button>
+        <button id="dialogAddCartBtn" class="button button-lime" style="justify-content:center;">
+          Add to Bag <span>+</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ORDER MODAL -->
+  <dialog id="orderDialog" class="order-dialog">
+    <div class="order-header">
+      <h3>Place Your Order</h3>
+      <button class="dialog-close" data-close-order aria-label="Close">&times;</button>
+    </div>
+
+    <div class="order-product-strip">
+      <div class="order-product-art" id="orderArt"></div>
+      <div style="flex:1;">
+        <div class="order-product-name" id="orderProductName">Luxury Case</div>
+        <div class="order-product-qty" id="orderProductQty">Qty: 1 · Rs. 1,450</div>
+        <div style="font-size:11px; color:#6a8060; font-weight:700; margin-top:2px;">
+          + Rs. 200 Delivery Fee (TCS / Leopards)
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:10px; color:var(--muted); text-transform:uppercase; font-weight:700;">Total</div>
+        <strong id="orderTotalDisplay" style="font-family:var(--display); font-size:16px;">Rs. 1,650</strong>
+      </div>
+    </div>
+
+    <form class="order-form" id="orderForm" novalidate>
+      <div class="order-field">
+        <label for="orderName">Your Full Name *</label>
+        <input type="text" id="orderName" placeholder="e.g. Faizan Lashari" required>
+      </div>
+
+      <div class="order-field">
+        <label for="orderPhone">Phone Number *</label>
+        <input type="tel" id="orderPhone" placeholder="0300-1234567" required>
+      </div>
+
+      <div class="order-field">
+        <label for="orderEmail">Email Address</label>
+        <input type="email" id="orderEmail" placeholder="your@email.com">
+      </div>
+
+      <div class="order-field">
+        <label for="orderAddress">Delivery Address *</label>
+        <textarea id="orderAddress" placeholder="House/Flat #, Street, Area, City" required></textarea>
+      </div>
+
+      <div class="order-field">
+        <label>Payment Method</label>
+        <div class="payment-options">
+          <div class="payment-option">
+            <input type="radio" name="payment" id="payAdvance" value="Advance Payment" checked onchange="togglePaymentBox('advance')">
+            <label for="payAdvance">
+              <span class="pay-icon">💳</span>
+              <span class="pay-title">Advance Payment</span>
+              <span class="pay-sub">JazzCash / EasyPaisa / Bank Transfer</span>
+            </label>
+          </div>
+          <div class="payment-option">
+            <input type="radio" name="payment" id="payCOD" value="Cash on Delivery" onchange="togglePaymentBox('cod')">
+            <label for="payCOD">
+              <span class="pay-icon">💵</span>
+              <span class="pay-title">Cash on Delivery</span>
+              <span class="pay-sub">Pay when courier delivers</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Advance Bank Details Container -->
+        <div class="advance-bank-details show" id="advanceBankDetails">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span style="font-weight:700; color:var(--ink); font-size:11px; text-transform:uppercase; letter-spacing:0.04em;">Official Payment Accounts</span>
+            <span style="font-size:10px; color:var(--muted); font-weight:600;">Click to copy number</span>
+          </div>
+          <div id="advanceAccountsList" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Dynamically populated with active accounts -->
+          </div>
+          <p style="font-size:10px; color:var(--muted); margin:4px 0 0; line-height:1.4;">
+            Payment transfer karne ke baad screenshot WhatsApp (<a href="https://wa.me/923212920914" target="_blank" class="shop-whatsapp-link" style="color:var(--ink); font-weight:700;"><span class="shop-phone-text">+92 321 2920914</span></a>) par share karein.
+          </p>
+        </div>
+      </div>
+
+      <button type="submit" class="order-submit">
+        Confirm Order ↗
+      </button>
+    </form>
+
+    <div class="order-success" id="orderSuccess">
+      <div class="order-success-icon">✓</div>
+      <h3>Order Placed!</h3>
+      <p>Shukriya! Aapka order receive ho gaya hai. Hamari team jald hi aap se contact karegi aur parcel dispatch karegi.</p>
+      <button class="button button-dark" data-close-order>
+        Keep exploring <span>↗</span>
+      </button>
+    </div>
+  </dialog>
+
+  <!-- SHOPPING BAG DIALOG -->
+  <dialog id="bagDialog" class="site-dialog bag-dialog">
+    <button class="dialog-close" data-close-bag aria-label="Close bag">&times;</button>
+    <div class="bag-dialog-content">
+      <span class="bag-icon">◌</span>
+      <span class="dialog-kicker">YOUR SHOPPING BAG</span>
+      <h3>Your Bag</h3>
+
+      <div class="bag-items-list" id="bagItemsList">
+        <!-- Dynamically injected cart items -->
+      </div>
+
+      <div id="bagSummaryBox">
+        <div class="bag-summary-row">
+          <span>Subtotal</span>
+          <span id="bagSubtotal">Rs. 0</span>
+        </div>
+        <div class="bag-summary-row">
+          <span>Delivery (TCS / Leopards)</span>
+          <span id="bagDelivery">Rs. 200 PKR</span>
+        </div>
+        <div class="bag-summary-row bag-summary-total">
+          <span>Grand Total</span>
+          <span id="bagGrandTotal">Rs. 0</span>
+        </div>
+        <button id="bagCheckoutBtn" class="button button-dark" style="width:100%; justify-content:center; margin-top:16px;">
+          Proceed to Order <span>↗</span>
+        </button>
+      </div>
+
+      <div id="bagEmptyView" style="display:none; padding: 20px 0;">
+        <p>Your bag is currently empty.</p>
+        <button class="button button-dark" data-close-bag style="margin-top:10px;">
+          Explore collection <span>↗</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- STORE SCRIPTS -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
