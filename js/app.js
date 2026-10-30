@@ -9,7 +9,7 @@
  * - Brand Filter & Live Search
  */
 
-const AppState = {
+window.AppState = window.AppState || {
   products: [],
   brands: [],
   settings: {},
@@ -26,6 +26,7 @@ const AppState = {
   reviews: [],
   currentReviewPage: 0
 };
+const AppState = window.AppState;
 
 // Calculate columns in product grid (4 desktop, 3 tablet, 2 mobile)
 function getGridColumnCount() {
@@ -111,7 +112,22 @@ function initCursorGlow() {
 
 // Render Store Settings (Phone, Email, Address, Announcement, Brand)
 function renderStoreSettings() {
-  const { storeName, email, phone, whatsapp, shopAddress, announcementText, socials, brandName, brandDot } = AppState.settings;
+  const { 
+    storeName, 
+    email, 
+    phone, 
+    whatsapp, 
+    shopAddress, 
+    announcementText, 
+    socials, 
+    brandName, 
+    brandDot,
+    locationHeading,
+    locationDesc,
+    storeTimings,
+    googleMapsQuery,
+    googleMapsUrl
+  } = (AppState.settings || {});
 
   // Dynamic Brand Logo & Name
   const bName = brandName || "xcess";
@@ -148,17 +164,28 @@ function renderStoreSettings() {
   const locTimingsEl = document.getElementById("displayLocationTimings");
   if (locTimingsEl && storeTimings) locTimingsEl.innerHTML = storeTimings;
 
+  const finalMapUrl = googleMapsUrl || "https://share.google/iiBvxUjHqCga5PFY1";
+
   const mapIframe = document.getElementById("shopMapIframe");
   if (mapIframe) {
-    mapIframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+    if (finalMapUrl.includes("output=embed") || finalMapUrl.includes("/maps/embed")) {
+      mapIframe.src = finalMapUrl;
+    } else {
+      const query = googleMapsQuery || address || "Lashari Mobile Plaza, Pakistan";
+      mapIframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+    }
   }
   const mapLink = document.getElementById("shopMapLink");
   if (mapLink) {
-    mapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    mapLink.href = finalMapUrl;
   }
   const mapFooterLink = document.getElementById("shopMapFooterLink");
   if (mapFooterLink) {
-    mapFooterLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    mapFooterLink.href = finalMapUrl;
+  }
+  const mapOpenLink = document.querySelector(".location-open-link");
+  if (mapOpenLink) {
+    mapOpenLink.href = finalMapUrl;
   }
 
   const annEl = document.getElementById("announcementCustomText");

@@ -4,6 +4,24 @@
  * Includes direct Address, Email, and Phone/WhatsApp management.
  */
 
+window.AppState = window.AppState || {
+  products: [],
+  brands: [],
+  settings: {},
+  cart: [],
+  savedWishlist: [],
+  activeFilter: "all",
+  activeBrand: "all",
+  activeCategory: "all",
+  searchQuery: "",
+  productQtyMap: {},
+  currentOrderProduct: null,
+  currentOrderQty: 1,
+  collectionVisibleCount: 8,
+  reviews: [],
+  currentReviewPage: 0
+};
+
 const AdminController = {
   isAdminLoggedIn: false,
   activeTab: "overview",
@@ -55,8 +73,10 @@ const AdminController = {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     // Refresh storefront state
-    AppState.settings = Storage.getSettings();
-    AppState.products = Storage.getProducts();
+    if (window.AppState) {
+      AppState.settings = Storage.getSettings();
+      AppState.products = Storage.getProducts();
+    }
     if (typeof renderStoreSettings === "function") renderStoreSettings();
     if (typeof renderProducts === "function") renderProducts();
   },
@@ -351,8 +371,8 @@ const AdminController = {
     if (!p) return;
     p.stock = Math.max(0, (p.stock || 0) + change);
     Storage.saveProducts(products);
-    AppState.products = products;
-    renderProducts();
+    if (window.AppState) AppState.products = products;
+    if (typeof renderProducts === "function") renderProducts();
     this.renderProductsTable();
     showToast(`Stock for "${p.title}" updated to ${p.stock}`, "success");
   },
@@ -564,7 +584,7 @@ const AdminController = {
     }
 
     Storage.saveProducts(products);
-    AppState.products = products;
+    if (window.AppState) AppState.products = products;
 
     this.renderProductsTable();
     this.closeProductForm();
@@ -580,7 +600,7 @@ const AdminController = {
 
     products = products.filter(p => p.id !== productId);
     Storage.saveProducts(products);
-    AppState.products = products;
+    if (window.AppState) AppState.products = products;
 
     showToast(`Product "${title}" deleted from store`, "info");
     this.renderProductsTable();
@@ -947,6 +967,7 @@ const AdminController = {
     setVal("setShopTimings", s.storeTimings || "Monday – Sunday: 11:00 AM – 11:00 PM (Friday Break: 1:00 PM – 2:30 PM)");
     setVal("setLocHeading", s.locationHeading || "Find us in person.");
     setVal("setLocDesc", s.locationDesc || "Experience our premium tech essentials, live checking warranty, and free precision mobile cover fitting at our official outlet.");
+    setVal("setGoogleMapsUrl", s.googleMapsUrl || "https://share.google/iiBvxUjHqCga5PFY1");
   },
 
   saveSettings(e) {
@@ -963,6 +984,7 @@ const AdminController = {
     const storeTimings = document.getElementById("setShopTimings")?.value.trim() || "Monday – Sunday: 11:00 AM – 11:00 PM (Friday Break: 1:00 PM – 2:30 PM)";
     const locationHeading = document.getElementById("setLocHeading")?.value.trim() || "Find us in person.";
     const locationDesc = document.getElementById("setLocDesc")?.value.trim() || "";
+    const googleMapsUrl = document.getElementById("setGoogleMapsUrl")?.value.trim() || "https://share.google/iiBvxUjHqCga5PFY1";
 
     let cleanWhatsapp = rawPhone.replace(/[^0-9]/g, "");
     if (cleanWhatsapp.startsWith("0")) {
@@ -1003,6 +1025,7 @@ const AdminController = {
       brandDot: brandDot,
       shopAddress: shopAddress,
       googleMapsQuery: shopAddress,
+      googleMapsUrl: googleMapsUrl,
       email: email,
       phone: rawPhone,
       whatsapp: cleanWhatsapp,
@@ -1017,21 +1040,23 @@ const AdminController = {
     };
 
     Storage.saveSettings(updated);
-    AppState.settings = updated;
+    if (window.AppState) AppState.settings = updated;
 
     if (typeof renderStoreSettings === "function") renderStoreSettings();
     this.renderOverview();
-    showToast("Store, Brand, Sections & Offer settings saved successfully!", "success");
+    showToast("Store, Brand, Sections, Map & Offer settings saved successfully!", "success");
   },
 
   resetStoreData() {
     if (confirm("Reset all products, orders, and settings to original initial demo state?")) {
       Storage.resetDemoData();
       showToast("Store data reset to default successfully!", "info");
-      AppState.settings = Storage.getSettings();
-      AppState.products = Storage.getProducts();
-      renderStoreInfo();
-      renderProducts();
+      if (window.AppState) {
+        AppState.settings = Storage.getSettings();
+        AppState.products = Storage.getProducts();
+      }
+      if (typeof renderStoreInfo === "function") renderStoreInfo();
+      if (typeof renderProducts === "function") renderProducts();
       this.renderOverview();
       this.renderOrdersTable();
       this.renderProductsTable();
@@ -1047,9 +1072,7 @@ const AdminController = {
     });
 
     const prodForm = document.getElementById("adminProductForm");
-    if (prodForm) {
-      prodForm.addEventListener("submit", (e) => this.saveProduct(e));
-    }
+    // Form already has onsubmit="AdminController.saveProduct(event)", avoid double-submitting
 
     const imgInput = document.getElementById("prodFormImage");
     if (imgInput) {
@@ -1088,7 +1111,7 @@ const AdminController = {
           if (!s.sectionVisibility) s.sectionVisibility = {};
           s.sectionVisibility[key] = chk.checked;
           Storage.saveSettings(s);
-          AppState.settings = s;
+          if (window.AppState) AppState.settings = s;
           if (typeof applySectionVisibility === "function") applySectionVisibility();
           showToast(`${label} ${chk.checked ? "shown on" : "hidden from"} homepage`, "info");
         });

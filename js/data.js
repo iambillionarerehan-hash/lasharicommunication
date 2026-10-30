@@ -4,6 +4,25 @@
  * add, delete, and persist changes seamlessly.
  */
 
+// Global AppState placeholder so that admin panel and storefront both operate safely
+window.AppState = window.AppState || {
+  products: [],
+  brands: [],
+  settings: {},
+  cart: [],
+  savedWishlist: [],
+  activeFilter: "all",
+  activeBrand: "all",
+  activeCategory: "all",
+  searchQuery: "",
+  productQtyMap: {},
+  currentOrderProduct: null,
+  currentOrderQty: 1,
+  collectionVisibleCount: 8,
+  reviews: [],
+  currentReviewPage: 0
+};
+
 const DEFAULT_SETTINGS = {
   brandName: "xcess",
   brandDot: ".",
@@ -17,6 +36,7 @@ const DEFAULT_SETTINGS = {
   locationHeading: "Find us in person.",
   locationDesc: "Experience our premium tech essentials, live checking warranty, and free precision mobile cover fitting at our official outlet.",
   googleMapsQuery: "Lashari Mobile Plaza, Pakistan",
+  googleMapsUrl: "https://share.google/iiBvxUjHqCga5PFY1",
   socials: {
     instagram: "https://instagram.com/thelasharicommunication",
     facebook: "https://facebook.com/thelasharicommunication",
@@ -872,6 +892,11 @@ const Storage = {
         parsed._pin_speed150 = true;
         changed = true;
       }
+      if (!parsed.googleMapsUrl || !parsed._map_url_share_v1) {
+        parsed.googleMapsUrl = "https://share.google/iiBvxUjHqCga5PFY1";
+        parsed._map_url_share_v1 = true;
+        changed = true;
+      }
       if (changed) {
         localStorage.setItem("lashari_settings", JSON.stringify(parsed));
       }
@@ -889,17 +914,18 @@ const Storage = {
   },
   getProducts: () => {
     const saved = localStorage.getItem("lashari_products");
-    if (!saved) return DEFAULT_PRODUCTS;
+    if (!saved) {
+      try {
+        localStorage.setItem("lashari_products", JSON.stringify(DEFAULT_PRODUCTS));
+      } catch(e) {}
+      return DEFAULT_PRODUCTS;
+    }
     try {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length < DEFAULT_PRODUCTS.length) {
-        const existingIds = new Set(parsed.map(p => p.id));
-        const missing = DEFAULT_PRODUCTS.filter(p => !existingIds.has(p.id));
-        const merged = [...parsed, ...missing];
-        localStorage.setItem("lashari_products", JSON.stringify(merged));
-        return merged;
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
       }
-      return parsed;
+      return DEFAULT_PRODUCTS;
     } catch(e) {
       return DEFAULT_PRODUCTS;
     }
